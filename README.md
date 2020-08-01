@@ -4,6 +4,8 @@ Spring Boot SOAP with Restful Web Services using Jersey:
 Requriment :
 ------------
 
+<img src="https://github.com/90rajibgarai/doc-important-links/blob/master/Architectures/Spring Boot Soap with Rest/Requirement/Screenshot_1.jpg">
+
 1) SOAP Web Service - Create a Web Service as it's own web application/project. The service must connect to a database and allow users to perform CRUD operations on the data using the SOAP web service. This application should not contain a web interface, only a SOAP service that you will connect to.
 2) Admin Application - Create a web application that will allow clients to perform CRUD operations on the data by calling the SOAP web service. This project will contain a web interface, and a Web Service Client (to the Web Service Project). The web project will likely need to use server side based calls to the SOAP service, so you will likely use JSP or Servlets to create the admin application.
 3) Frontend Content Application - Create a web application that will allow users to view content. The application should show a listing of available shows and movies, allowing a user to select one to watch. Once selected, the user should see the show details (running time, title, producer, director, etc...) and a thumbnail preview. This application will retrieve content to display from the REST service (not the SOAP service and not directly from the database). The application should make it's API REST calls from the front end (via JavaScript or a JavaScript framework). This application can be built with anything you wish (JSP, Spring)
@@ -125,6 +127,16 @@ You can do all CRUD operations using admin-rest-service. It's internally call yo
 
 B) client-rest-service : 
 Here you can do only Get Operation using rest call. It's also internally call your "soap-web-service" through SOAP Client. The all Database operation All database operation written in your soap-web-service. 
+
+Process : 
+---------
+
+1) Create a web base project with fillowing library : [Spring web service, devtools, lombok, jersey, spring-oxm, spring-ws-core]
+2) Now add folder name wsdl in resource and add a file program.wsdl. Then copy pest wsdl content from http://localhost:9090/ws/program.wsdl
+3) Now add a plugin in pom.xml : maven-jaxb2-plugin => to convert JSON to XML conversion for SOAP Client call
+4) Now  'mvn clean install' using JDK
+5) Then Develop Rest Service using Jersey [not Spring Rest]
+6) Then Run soap-web-service, admin-rest-service, client-rest-service.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Generated Sample WSDL file : http://localhost:9090/ws/program.wsdl
@@ -363,6 +375,19 @@ Generated Sample WSDL file : http://localhost:9090/ws/program.wsdl
       </wsdl:service>
     </wsdl:definitions>
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Testing Screen Shots: https://github.com/90rajibgarai/doc-important-links/blob/master/Architectures/Spring Boot Soap with Rest/Screen Shots/
+
+SOAP API CALL :
+
+<img src="https://github.com/90rajibgarai/doc-important-links/blob/master/Architectures/Spring Boot Soap with Rest/Screen Shots/SOAP-API-SAVE_PROGRAM.jpg">
+
+ADMIN REST API CALL : 
+
+<img src="https://github.com/90rajibgarai/doc-important-links/blob/master/Architectures/Spring Boot Soap with Rest/Screen Shots/REST-ADMIN-SAVE-PROGRAM.jpg">
+
+CLIENT REST API CALL :
+
+<img src="https://github.com/90rajibgarai/doc-important-links/blob/master/Architectures/Spring Boot Soap with Rest/Screen Shots/REST-CLIENT-GET-ALL-PROGRAMS.jpg">
 
 
 
