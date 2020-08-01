@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.soap.com/ws/config/xsd"
+	xmlns:tns="http://www.soap.com/ws/config/xsd"
+	elementFormDefault="qualified">
+	
+<!-- SAVE PROGRAM -->
+
+	<xsd:element name="saveProgramRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="title" type="xsd:string" />
+	            <xsd:element name="type" type="xsd:string" />
+	            <xsd:element name="producer" type="xsd:string" />
+	            <xsd:element name="director" type="xsd:string" />
+	            <xsd:element name="content" type="xsd:hexBinary" />
+	            <xsd:element name="runningTime" type="xsd:dateTime" />
+	            <xsd:element name="addedBy" type="xsd:int" />
+	            <xsd:element name="updatedBy" type="xsd:int" />      
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>  
+    
+<!-- GET ALL PROGRAMS -->
+
+	<xsd:element name="getAllProgramsRequest" >
+		<xsd:complexType></xsd:complexType>
+	 </xsd:element>
+
+	<xsd:element name="getAllProgramsResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="programs" type="tns:program" maxOccurs="unbounded" minOccurs="0"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element> 
+	
+<!-- GET PROGRAM BY ID -->
+
+	<xsd:element name="getProgramRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="id" type="xsd:int" />
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="getProgramResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="program" type="tns:program" />
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>     
+    
+<!-- UPDATE PROGRAM -->
+
+    <xsd:element name="updateProgramRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+            	<xsd:element name="id" type="xsd:int" />
+                <xsd:element name="title" type="xsd:string" />
+	            <xsd:element name="type" type="xsd:string" />
+	            <xsd:element name="producer" type="xsd:string" />
+	            <xsd:element name="director" type="xsd:string" />
+	            <xsd:element name="content" type="xsd:hexBinary" />
+	            <xsd:element name="runningTime" type="xsd:dateTime" />
+	            <xsd:element name="addedBy" type="xsd:int" />
+	            <xsd:element name="updatedBy" type="xsd:int" />      
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>  
+    
+<!-- DELETE PROGRAM -->
+
+    <xsd:element name="deleteProgramRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="id" type="xsd:int" />
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    
+<!-- GET MESSAGE -->
+    
+    <xsd:element name="getMessageResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="messgae" type="xsd:string" />
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    
+<!-- PROGRAM MODEL -->
+   
+   <xsd:complexType name="program">
+        <xsd:sequence>
+        	<xsd:element name="id" type="xsd:int" />
+            <xsd:element name="title" type="xsd:string" />
+            <xsd:element name="type" type="xsd:string" />
+            <xsd:element name="producer" type="xsd:string" />
+            <xsd:element name="director" type="xsd:string" />
+            <xsd:element name="content" type="xsd:hexBinary" />
+            <xsd:element name="runningTime" type="xsd:dateTime" />
+            <xsd:element name="addedBy" type="xsd:int" />
+            <xsd:element name="updatedBy" type="xsd:int" />            
+        </xsd:sequence>
+    </xsd:complexType>
+  
+<!-- END -->
+    
+</xsd:schema>
