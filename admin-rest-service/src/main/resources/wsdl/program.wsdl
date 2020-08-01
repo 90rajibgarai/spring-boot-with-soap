@@ -1,0 +1,233 @@
+<wsdl:definitions
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:sch="http://www.soap.com/ws/config/xsd"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://www.soap.com/ws/config/xsd"
+	targetNamespace="http://www.soap.com/ws/config/xsd">
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			elementFormDefault="qualified"
+			targetNamespace="http://www.soap.com/ws/config/xsd">
+			<!-- SAVE PROGRAM -->
+			<xsd:element name="saveProgramRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="title" type="xsd:string" />
+						<xsd:element name="type" type="xsd:string" />
+						<xsd:element name="producer" type="xsd:string" />
+						<xsd:element name="director" type="xsd:string" />
+						<xsd:element name="content" type="xsd:hexBinary" />
+						<xsd:element name="runningTime" type="xsd:dateTime" />
+						<xsd:element name="addedBy" type="xsd:int" />
+						<xsd:element name="updatedBy" type="xsd:int" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<!-- GET ALL PROGRAMS -->
+			<xsd:element name="getAllProgramsRequest">
+				<xsd:complexType />
+			</xsd:element>
+			<xsd:element name="getAllProgramsResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element maxOccurs="unbounded" minOccurs="0"
+							name="programs" type="tns:program" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<!-- GET PROGRAM BY ID -->
+			<xsd:element name="getProgramRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="id" type="xsd:int" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getProgramResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="program" type="tns:program" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<!-- UPDATE PROGRAM -->
+			<xsd:element name="updateProgramRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="id" type="xsd:int" />
+						<xsd:element name="title" type="xsd:string" />
+						<xsd:element name="type" type="xsd:string" />
+						<xsd:element name="producer" type="xsd:string" />
+						<xsd:element name="director" type="xsd:string" />
+						<xsd:element name="content" type="xsd:hexBinary" />
+						<xsd:element name="runningTime" type="xsd:dateTime" />
+						<xsd:element name="addedBy" type="xsd:int" />
+						<xsd:element name="updatedBy" type="xsd:int" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<!-- DELETE PROGRAM -->
+			<xsd:element name="deleteProgramRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="id" type="xsd:int" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<!-- GET MESSAGE -->
+			<xsd:element name="getMessageResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="messgae" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<!-- PROGRAM MODEL -->
+			<xsd:complexType name="program">
+				<xsd:sequence>
+					<xsd:element name="id" type="xsd:int" />
+					<xsd:element name="title" type="xsd:string" />
+					<xsd:element name="type" type="xsd:string" />
+					<xsd:element name="producer" type="xsd:string" />
+					<xsd:element name="director" type="xsd:string" />
+					<xsd:element name="content" type="xsd:hexBinary" />
+					<xsd:element name="runningTime" type="xsd:dateTime" />
+					<xsd:element name="addedBy" type="xsd:int" />
+					<xsd:element name="updatedBy" type="xsd:int" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<!-- END -->
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="getProgramRequest">
+		<wsdl:part element="tns:getProgramRequest"
+			name="getProgramRequest">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getMessageResponse">
+		<wsdl:part element="tns:getMessageResponse"
+			name="getMessageResponse">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="deleteProgramRequest">
+		<wsdl:part element="tns:deleteProgramRequest"
+			name="deleteProgramRequest">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getAllProgramsResponse">
+		<wsdl:part element="tns:getAllProgramsResponse"
+			name="getAllProgramsResponse">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getProgramResponse">
+		<wsdl:part element="tns:getProgramResponse"
+			name="getProgramResponse">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateProgramRequest">
+		<wsdl:part element="tns:updateProgramRequest"
+			name="updateProgramRequest">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="saveProgramRequest">
+		<wsdl:part element="tns:saveProgramRequest"
+			name="saveProgramRequest">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getAllProgramsRequest">
+		<wsdl:part element="tns:getAllProgramsRequest"
+			name="getAllProgramsRequest">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="ProgramServicePort">
+		<wsdl:operation name="getProgram">
+			<wsdl:input message="tns:getProgramRequest"
+				name="getProgramRequest">
+			</wsdl:input>
+			<wsdl:output message="tns:getProgramResponse"
+				name="getProgramResponse">
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getMessage">
+			<wsdl:output message="tns:getMessageResponse"
+				name="getMessageResponse">
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="deleteProgram">
+			<wsdl:input message="tns:deleteProgramRequest"
+				name="deleteProgramRequest">
+			</wsdl:input>
+		</wsdl:operation>
+		<wsdl:operation name="getAllPrograms">
+			<wsdl:input message="tns:getAllProgramsRequest"
+				name="getAllProgramsRequest">
+			</wsdl:input>
+			<wsdl:output message="tns:getAllProgramsResponse"
+				name="getAllProgramsResponse">
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="updateProgram">
+			<wsdl:input message="tns:updateProgramRequest"
+				name="updateProgramRequest">
+			</wsdl:input>
+		</wsdl:operation>
+		<wsdl:operation name="saveProgram">
+			<wsdl:input message="tns:saveProgramRequest"
+				name="saveProgramRequest">
+			</wsdl:input>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="ProgramServicePortSoap11"
+		type="tns:ProgramServicePort">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="getProgram">
+			<soap:operation soapAction="" />
+			<wsdl:input name="getProgramRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getProgramResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getMessage">
+			<soap:operation soapAction="" />
+			<wsdl:output name="getMessageResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="deleteProgram">
+			<soap:operation soapAction="" />
+			<wsdl:input name="deleteProgramRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+		</wsdl:operation>
+		<wsdl:operation name="getAllPrograms">
+			<soap:operation soapAction="" />
+			<wsdl:input name="getAllProgramsRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getAllProgramsResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="updateProgram">
+			<soap:operation soapAction="" />
+			<wsdl:input name="updateProgramRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+		</wsdl:operation>
+		<wsdl:operation name="saveProgram">
+			<soap:operation soapAction="" />
+			<wsdl:input name="saveProgramRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="ProgramServicePortService">
+		<wsdl:port binding="tns:ProgramServicePortSoap11"
+			name="ProgramServicePortSoap11">
+			<soap:address location="http://localhost:9090/ws" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
